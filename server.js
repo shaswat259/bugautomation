@@ -10,7 +10,7 @@ app.use(express.static(__dirname));
 
 // Endpoint to run the bugautomation.js script
 app.get('/run-bugautomation', (req, res) => {
-    exec('node bugautomation.js', (error, stdout, stderr) => {
+    exec('node ./bugautomation.js', (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing script: ${error.message}`);
             return res.status(500).send(`Error: ${error.message}`);
