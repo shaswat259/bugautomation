@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Automation Runner</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #logs { margin-top: 20px; white-space: pre-wrap; background: #f4f4f4; padding: 10px; border: 1px solid #ccc; }
+        button { padding: 10px 15px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>Bug Automation Runner</h1>
+    <button id="startButton">Start Automation</button>
+    <div id="logs"></div>
+
+    <script>
+        document.getElementById('startButton').addEventListener('click', async () => {
+            const response = await fetch('/run-bugautomation');
+            const logs = await response.text();
+            document.getElementById('logs').innerText = logs; // Display logs in the logs div
+        });
+    </script>
+</body>
+</html>
+</create_file>
