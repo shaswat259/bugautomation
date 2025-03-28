@@ -3,6 +3,7 @@ require('dotenv').config();
 const { exec } = require('child_process');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const path = require('path');
 
 // Serve static files from the current directory
 app.use(express.static(__dirname));
@@ -24,6 +25,13 @@ app.get('/run-bugautomation', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+// });
+
+app.get('/',(req,res)=>{
+    app.use(express.static(path.resolve(__dirname)));
+    res.sendFile(path.resolve(__dirname,'index.html'));
+  })
+
+  app.listen(PORT, ()=> console.log(`Listening to port ${PORT}`));
